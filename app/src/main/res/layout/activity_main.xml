@@ -29,4 +29,7 @@
         android:layout_height="wrap_content"
         android:text="Add Habit"
         android:onClick="addHabit"/>
+
+
+
 </LinearLayout>
