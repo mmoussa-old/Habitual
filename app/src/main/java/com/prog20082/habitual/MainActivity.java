@@ -19,5 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, CreateHabitActivity.class);
         startActivityForResult(intent, CREATE_HABIT_ACTIVITY);
+
     }
 }
