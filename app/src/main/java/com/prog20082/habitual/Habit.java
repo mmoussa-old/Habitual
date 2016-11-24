@@ -15,6 +15,15 @@ public class Habit implements Parcelable{
     private String goalUnits;
     private boolean complete;
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+      dest.writeLong(id);
+      dest.writeString(name);
+      dest.writeByte((byte) (good ? 1 : 0));
+      dest.writeInt(goal);
+      dest.writeString(goalUnits);
+      dest.writeByte((byte) (complete ? 1 : 0));
+    }
 
     public Habit(String name, boolean good, int goal, String goalUnits) {
         this.name = name;
@@ -98,13 +107,5 @@ public class Habit implements Parcelable{
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(id);
-        dest.writeString(name);
-        dest.writeByte((byte) (good ? 1 : 0));
-        dest.writeInt(goal);
-        dest.writeString(goalUnits);
-        dest.writeByte((byte) (complete ? 1 : 0));
-    }
+
 }
