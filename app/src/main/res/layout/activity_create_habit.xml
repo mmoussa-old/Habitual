@@ -31,15 +31,31 @@
             android:id="@+id/edtGoal"/>
 
         <Spinner
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.10"
             android:id="@+id/spnGoalUnits">
 
         </Spinner>
 
 
     </LinearLayout>
+
+    <CheckBox
+      android:textAppearance="?android:textAppearanceMedium"
+      android:text="Good Habit"
+      android:layout_marginTop="15dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/chkGoodHabit"/>
+
+    <CheckBox
+      android:textAppearance="?android:textAppearanceMedium"
+      android:text="Bad Habit"
+      android:layout_marginTop="10dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/chkBadHabit"/>
 
     <Button
         android:layout_marginTop="20dp"

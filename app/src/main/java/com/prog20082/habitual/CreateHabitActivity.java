@@ -21,6 +21,8 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
   CheckBox chkBadHabit;
   CheckBox chkGoodHabit;
 
+  private static final int MAIN_ACTIVITY = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +53,6 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
       spnGoalUnits.setOnItemSelectedListener(this);
 
 
-
-
     }
 
     public void submitHabit(View view) {
@@ -62,9 +62,14 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
 
       //Have to work on spnGoalUnits forgot that mo; onSelected junk
 
-      //Send a new parcelable habit
-      //Habit parcelableHabit = new Habit(habitName, goal, );
+      //Send a new parcelable habit for testing purposes to see if it goes to next screen
+      Habit parcelableHabit = new Habit(habitName, true, 3, goal);
+      Intent intent = new Intent(this, CreateHabitActivity.class);
+      intent.putExtra("habit", parcelableHabit);
+      setResult(RESULT_OK, intent);
+
     }
+
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int pos, long id) {

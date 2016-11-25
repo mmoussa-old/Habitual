@@ -10,26 +10,35 @@
     android:orientation="vertical"
     tools:context="com.prog20082.habitual.MainActivity">
 
+    <Button
+      android:layout_marginTop="5dp"
+      android:layout_marginBottom="19dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Add Habit"
+      android:onClick="addHabit"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="List of Habits"
         android:textAppearance="?android:textAppearanceLarge"/>
 
+    <TextView
+      android:text="Name: "
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/txtName" />
+    <TextView
+      android:text="Goals: "
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/txtGoals" />
+
+
     <ListView
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </ListView>
-
-    <Button
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Habit"
-        android:onClick="addHabit"/>
-
-
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:id="@+id/habitsListView"></ListView>
 
 </LinearLayout>
