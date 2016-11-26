@@ -107,5 +107,8 @@ public class Habit implements Parcelable{
         return 0;
     }
 
-
+  @Override
+  public String toString() {
+    return name + goalUnits;
+  }
 }

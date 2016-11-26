@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         txtName = (TextView) findViewById(R.id.txtName);
         txtGoals = (TextView) findViewById(R.id.txtGoals);
         habitsArray = new ArrayList<Habit>();
-        adapter = new ArrayAdapter<Habit>(this, android.R.layout.simple_list_item_1, habitsArray);;
+        adapter = new HabitsArrayAdapter(this, 0, habitsArray);;
 
 
     }
@@ -42,10 +42,11 @@ public class MainActivity extends AppCompatActivity {
     super.onActivityResult(requestCode, resultCode, data);
 
     Toast.makeText(this, "Coming from the createHabit Page", Toast.LENGTH_LONG).show();
-    b = data.getExtras();
+
 
 
       if (resultCode == RESULT_OK) {
+        b = data.getExtras();
         if (b != null) {
           Habit h = data.getParcelableExtra("habit");
           txtName.setText(h.getName().toString());
