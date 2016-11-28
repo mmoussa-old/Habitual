@@ -78,7 +78,7 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
         intent.putExtra("habit", parcelableHabit);
         setResult(RESULT_OK, intent);
 
-        //Create a notification if the notification is checked.
+        //Create a notification if the notification checkbox is checked
 
         if (chkNotify.isChecked()) {
 
