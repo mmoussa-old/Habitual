@@ -4,6 +4,8 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView.OnItemClickListener;
+
+import java.util.Random;
 
 public class CreateHabitActivity extends AppCompatActivity implements OnItemSelectedListener {
 
@@ -62,10 +66,16 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
 
     }
 
-    //notification ID
-    public static int MY_NOTIFICATION = 1;
+    
+
+    //notification Group
+    public static String NOTIFICATION_GROUP = "notification_group";
 
     public void submitHabit(View view) {
+
+        //Random Notification ID
+        Random random = new Random();
+        int m = random.nextInt(9999-1000) + 1000;
 
         String habitName = edtHabitName.getText().toString();
         String goal = edtGoal.getText().toString();
@@ -95,9 +105,10 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
                     .setAutoCancel(true)
                     .build();
 
-            nm.notify(MY_NOTIFICATION, notification);
-        }
+            nm.notify(m, notification);
 
+
+        }
 
     }
 
