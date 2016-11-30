@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * Created by mmous on 11/22/2016.
  */
-public class Habit implements Parcelable{
+public class Habit implements Parcelable {
 
     private long id;
     private String name;
@@ -14,17 +14,18 @@ public class Habit implements Parcelable{
     private int goal;
     private String goalUnits;
     private boolean complete;
-
+    private int streak;
 
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-      dest.writeLong(id);
-      dest.writeString(name);
-      dest.writeByte((byte) (good ? 1 : 0));
-      dest.writeInt(goal);
-      dest.writeString(goalUnits);
-      dest.writeByte((byte) (complete ? 1 : 0));
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeByte((byte) (good ? 1 : 0));
+        dest.writeInt(goal);
+        dest.writeString(goalUnits);
+        dest.writeByte((byte) (complete ? 1 : 0));
+        dest.writeInt(streak);
     }
 
     public Habit(String name, boolean good, int goal, String goalUnits, boolean complete) {
@@ -33,6 +34,7 @@ public class Habit implements Parcelable{
         this.goal = goal;
         this.goalUnits = goalUnits;
         this.complete = complete;
+        this.streak = 0;
     }
 
     protected Habit(Parcel in) {
@@ -42,6 +44,7 @@ public class Habit implements Parcelable{
         goal = in.readInt();
         goalUnits = in.readString();
         complete = in.readByte() != 0;
+        streak = in.readInt();
     }
 
     public static final Creator<Habit> CREATOR = new Creator<Habit>() {
@@ -104,13 +107,21 @@ public class Habit implements Parcelable{
         this.complete = complete;
     }
 
+    public int getStreak() {
+        return streak;
+    }
+
+    public void setStreak(int streak) {
+        this.streak = streak;
+    }
+
     @Override
     public int describeContents() {
         return 0;
     }
 
-  @Override
-  public String toString() {
-    return name + goalUnits;
-  }
+    @Override
+    public String toString() {
+        return name + goalUnits;
+    }
 }
