@@ -68,10 +68,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void deleteTest(View view) {
-        Habit habit = habitsArray.get(1);
-        HabitsDb db = new HabitsDb(this);
-        db.deleteHabit(habit);
-        //db.deleteAllHabits();
-    }
+//    public void deleteTest(View view) {
+//        Habit habit = habitsArray.get(1);
+//        HabitsDb db = new HabitsDb(this);
+//        db.deleteHabit(habit);
+//        //db.deleteAllHabits();
+//    }
 }

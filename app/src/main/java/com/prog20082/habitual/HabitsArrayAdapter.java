@@ -55,7 +55,6 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
     deleteButton.setOnClickListener(
       new Button.OnClickListener() {
 
-
         @Override
         public void onClick(View view) {
 
