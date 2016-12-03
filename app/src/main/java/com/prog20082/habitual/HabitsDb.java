@@ -99,7 +99,7 @@ public class HabitsDb {
         long id = habit.getId();
 
         String where = ID + "=?";
-        String[] whereArgs = new String[]{String.valueOf(id)};
+        String[] whereArgs = new String[]{Long.toString(id)};
 
         numberDeleted = database.delete(HABITS_TABLE, where, whereArgs);
 
