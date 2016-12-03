@@ -63,13 +63,10 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
       //Have to work on spnGoalUnits forgot that mo; onSelected junk
 
       //Send a new parcelable habit for testing purposes to see if it goes to next screen
-      Habit parcelableHabit = new Habit(habitName, true, 3, goal, false);
+      Habit parcelableHabit = new Habit(habitName, true, 3, goal);
       Intent intent = new Intent(this, CreateHabitActivity.class);
       intent.putExtra("habit", parcelableHabit);
-      HabitsDb database = new HabitsDb(this);
-      database.saveHabit(parcelableHabit);
       setResult(RESULT_OK, intent);
-      finish();
 
     }
 

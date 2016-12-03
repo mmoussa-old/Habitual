@@ -33,6 +33,7 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
     //get the habit we are displaying
     Habit habit = habits.get(position);
+    //comment yeezy
 
     //Get the inflater and inflate the xml layout for each item
     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);

@@ -39,7 +39,10 @@
         </Spinner>
 
 
+
+
     </LinearLayout>
+
 
     <CheckBox
       android:textAppearance="?android:textAppearanceMedium"
@@ -56,6 +59,14 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:id="@+id/chkBadHabit"/>
+
+    <CheckBox
+        android:id="@+id/chkNotify"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notify"
+        android:textAppearance="?android:textAppearanceMedium"/>
 
     <Button
         android:layout_marginTop="20dp"
