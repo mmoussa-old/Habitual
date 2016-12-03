@@ -31,8 +31,13 @@ public class MainActivity extends AppCompatActivity {
         habitsListView = (ListView) findViewById(R.id.habitsListView);
         txtName = (TextView) findViewById(R.id.txtName);
         txtGoals = (TextView) findViewById(R.id.txtGoals);
-        habitsArray = new ArrayList<Habit>();
-        adapter = new HabitsArrayAdapter(this, 0, habitsArray);;
+
+         HabitsDb db = new HabitsDb(this);
+
+
+        habitsArray = db.loadAllHabits();
+        adapter = new HabitsArrayAdapter(this, 0, habitsArray);
+
 
 
     }
