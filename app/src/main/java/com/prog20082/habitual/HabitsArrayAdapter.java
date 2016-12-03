@@ -50,4 +50,7 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
   }
 
+  public void deleteHabit(View view){
+
+  }
 }
