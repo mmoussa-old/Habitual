@@ -16,6 +16,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateHabitActivity"></activity>
+
+
+        //register the service
+        <service android:name=".AlarmService"
+           android:process=":remote" />
+
+        <receiver android:name=".NotificationPublisher"/>
+
     </application>
 
 </manifest>

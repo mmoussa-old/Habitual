@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.prog20082.habitual.CreateHabitActivity">
+    tools:context="com.prog20082.habitual.CreateHabitActivity"
+    android:weightSum="1">
 
     <EditText
         android:layout_width="match_parent"
@@ -49,6 +50,8 @@
       android:layout_height="wrap_content"
       android:id="@+id/chkGoodHabit"/>
 
+
+
     <CheckBox
       android:textAppearance="?android:textAppearanceMedium"
       android:text="Bad Habit"
@@ -57,14 +60,30 @@
       android:layout_height="wrap_content"
       android:id="@+id/chkBadHabit"/>
 
+
+    <CheckBox
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="Notify Me"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chkNotify"/>
+
     <Button
+    android:layout_marginTop="20dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Submit"
+    android:onClick="submitHabit"/>
+
+    <Button
+        android:id="@+id/btnSetTime"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
-        android:onClick="submitHabit"/>
-
-
+        android:text="Set Time"
+        android:enabled="false"
+        android:onClick="notifyMe"/>
 
 
 </LinearLayout>
