@@ -58,9 +58,12 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
         @Override
         public void onClick(View view) {
 
+
           //Returns the index of the habit item from the list
           Integer index = (Integer) view.getTag();
-          db.deleteHabit(habits.get((int) habit.getId()));
+          Habit habitToDelete = habits.get(index); //gets habit from list
+          long dbId = habitToDelete.getId();
+          db.deleteHabit(habitToDelete);
           habits.remove(index.intValue());
           notifyDataSetChanged();
 
