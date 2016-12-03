@@ -14,21 +14,26 @@ public class Habit implements Parcelable{
     private int goal;
     private String goalUnits;
     private boolean complete;
+    private int streak;
 
-    @Override
+
+  @Override
     public void writeToParcel(Parcel dest, int flags) {
       dest.writeLong(id);
       dest.writeString(name);
       dest.writeByte((byte) (good ? 1 : 0));
       dest.writeInt(goal);
       dest.writeString(goalUnits);
+      dest.writeInt(streak);
       dest.writeByte((byte) (complete ? 1 : 0));
     }
 
-    public Habit(String name, boolean good, int goal, String goalUnits) {
+    public Habit(String name, boolean good, int goal, String goalUnits, boolean complete) {
         this.name = name;
         this.good = good;
         this.goal = goal;
+        this.streak = 0;
+        this.complete = complete;
         this.goalUnits = goalUnits;
         complete = false;
     }
@@ -40,6 +45,7 @@ public class Habit implements Parcelable{
         goal = in.readInt();
         goalUnits = in.readString();
         complete = in.readByte() != 0;
+        streak = in.readInt();
     }
 
     public static final Creator<Habit> CREATOR = new Creator<Habit>() {
@@ -102,13 +108,17 @@ public class Habit implements Parcelable{
         this.complete = complete;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
+    public int getStreak() {return streak;}
 
-  @Override
-  public String toString() {
-    return name + goalUnits;
-  }
+    public void setStreak(int streak) {this.streak = streak;}
+
+    @Override
+      public int describeContents() {
+          return 0;
+      }
+
+    @Override
+    public String toString() {
+      return name + goalUnits;
+    }
 }

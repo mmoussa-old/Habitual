@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
@@ -41,6 +42,22 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
     TextView habitName = (TextView) view.findViewById(R.id.txtHabitName);
     TextView goalUnit = (TextView) view.findViewById(R.id.txtHabitGoals);
+    Button deleteButton = (Button) view.findViewById(R.id.btnDeleteHabit);
+
+    deleteButton.setTag(position);
+
+    deleteButton.setOnClickListener(
+      new Button.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+          Integer index = (Integer) view.getTag();
+          habits.remove(index.intValue());
+          notifyDataSetChanged();
+        }
+      }
+    );
+
 
     //Set habit name and description
     habitName.setText(habit.getName().toString());

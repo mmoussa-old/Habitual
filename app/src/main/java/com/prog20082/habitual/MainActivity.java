@@ -32,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
         txtName = (TextView) findViewById(R.id.txtName);
         txtGoals = (TextView) findViewById(R.id.txtGoals);
 
-         HabitsDb db = new HabitsDb(this);
-
+        HabitsDb db = new HabitsDb(this);
 
         habitsArray = db.loadAllHabits();
         adapter = new HabitsArrayAdapter(this, 0, habitsArray);
@@ -47,8 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
     Toast.makeText(this, "Coming from the createHabit Page", Toast.LENGTH_LONG).show();
 
-
-
       if (resultCode == RESULT_OK) {
         b = data.getExtras();
         if (b != null) {
@@ -60,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
           habitsListView.setAdapter(adapter);
         }
       }
-
   }
+
+
 
   public void addHabit(View view) {
 
