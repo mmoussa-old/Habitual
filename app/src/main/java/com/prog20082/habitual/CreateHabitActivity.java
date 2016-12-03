@@ -66,7 +66,10 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
       Habit parcelableHabit = new Habit(habitName, true, 3, goal, false);
       Intent intent = new Intent(this, CreateHabitActivity.class);
       intent.putExtra("habit", parcelableHabit);
+      HabitsDb database = new HabitsDb(this);
+      database.saveHabit(parcelableHabit);
       setResult(RESULT_OK, intent);
+      finish();
 
     }
 
