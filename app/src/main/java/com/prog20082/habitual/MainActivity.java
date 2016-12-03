@@ -37,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         habitsArray = db.loadAllHabits();
         adapter = new HabitsArrayAdapter(this, 0, habitsArray);
-
-
+        habitsListView.setAdapter(adapter);
 
     }
 
