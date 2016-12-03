@@ -21,6 +21,10 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
   private Context context;
   private List<Habit> habits;
+  private Habit habit;
+  HabitsDb db;
+
+
 
   //Constructor call on Creation
   public HabitsArrayAdapter(Context context, int resource, ArrayList<Habit> objects) {
@@ -33,7 +37,7 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
   public View getView(int position, View convertView, ViewGroup parent) {
 
     //get the habit we are displaying
-    Habit habit = habits.get(position);
+    habit = habits.get(position);
     //comment yeezy
 
     //Get the inflater and inflate the xml layout for each item
@@ -46,14 +50,21 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
     deleteButton.setTag(position);
 
+    db = new HabitsDb(context);
+
     deleteButton.setOnClickListener(
       new Button.OnClickListener() {
 
+
         @Override
         public void onClick(View view) {
+
+          //Returns the index of the habit item from the list
           Integer index = (Integer) view.getTag();
+          db.deleteHabit(habits.get((int) habit.getId()));
           habits.remove(index.intValue());
           notifyDataSetChanged();
+
         }
       }
     );
@@ -68,7 +79,4 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
   }
 
-  public void deleteHabit(View view){
-
-  }
 }
