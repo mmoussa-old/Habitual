@@ -92,6 +92,20 @@ public class HabitsDb {
 
     }
 
+    public int deleteHabit(Habit habit){
+        int numberDeleted = 0;
+
+        database = openHelper.getWritableDatabase();
+        long id = habit.getId();
+
+        String where = ID + "=?";
+        String[] whereArgs = new String[]{String.valueOf(id)};
+
+        numberDeleted = database.delete(HABITS_TABLE, where, whereArgs);
+
+        return numberDeleted;
+    }
+
     //update database
     public Habit updateHabitStreak(Habit habit){
         database = openHelper.getWritableDatabase();
