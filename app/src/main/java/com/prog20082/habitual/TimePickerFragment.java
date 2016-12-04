@@ -18,7 +18,7 @@ import java.util.Calendar;
  * Created by prabh on 2016-12-02.
  */
 
-public class TimePickerFragment extends DialogFragment  {
+public class TimePickerFragment extends DialogFragment  implements TimePickerDialog.OnTimeSetListener{
 
 
 
@@ -27,24 +27,40 @@ public class TimePickerFragment extends DialogFragment  {
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
 
+
         //Using the current time as the default values
         Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
-        int minutes = cal.get(Calendar.MINUTE);
-        cal.set(Calendar.HOUR, hour);
-        cal.set(Calendar.MINUTE, minutes);
-        TimePickerDialog dialog;
-        TimeSettings timeSettings = new TimeSettings(getActivity());
-        dialog = new TimePickerDialog(getActivity(), timeSettings,hour,minutes, DateFormat.is24HourFormat(getActivity()));
+        int minute = cal.get(Calendar.MINUTE);
 
-
-
-
-
-        return dialog;
+        return new TimePickerDialog(getActivity(), this, hour, minute, DateFormat.is24HourFormat(getActivity()));
 
 
     }
 
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+
+        Toast.makeText(getActivity(), "Time SET BRUH: " + hourOfDay + " minute: " + minute,Toast.LENGTH_LONG).show();
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR, hourOfDay);
+        cal.set(Calendar.MINUTE, minute);
+        Intent intent = new Intent(getActivity(),MainActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("hour", hourOfDay);
+        bundle.putInt("minute", minute);
+
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+
+
+
+
+    }
 }
+
+

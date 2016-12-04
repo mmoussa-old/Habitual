@@ -14,36 +14,36 @@ import android.widget.Toast;
  * Created by prabh on 2016-12-02.
  */
 
-public class NotificationPublisher extends BroadcastReceiver{
+public class NotificationPublisher extends BroadcastReceiver {
 
 
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent in = new Intent(context, TimeService.class);
+        context.startService(in);
 
-        Intent intentBR = new Intent(context, TimeSettings.class);
+//        NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+//
+//        Intent intentBR = new Intent(context, MainActivity.class);
+//
+//
+//        PendingIntent pi = PendingIntent.getActivity(context, 0, intentBR, PendingIntent.FLAG_UPDATE_CURRENT);
+//        long[] pattern = {500,500,500,500,500,500,500,500,500};
+//
+//
+//        NotificationCompat.Builder notificationCompBuilder = new NotificationCompat.Builder(context)
+//                .setContentTitle("Reminder: Habitual")
+//                .setContentText("Did you engage in your habit? ")
+//                .setTicker("New Habit")
+//                .setAutoCancel(true)
+//                .setVibrate(pattern)
+//                .setSmallIcon(R.mipmap.ic_launcher);
+//
+//        notificationCompBuilder.setContentIntent(pi);
+//
+//        manager.notify(0, notificationCompBuilder.build());
 
-        String hours = intentBR.getStringExtra("hour");
-        String mins = intentBR.getStringExtra("minute");
-        Toast.makeText(context, "Yours time is hour: " + hours+ " minute: " + mins,Toast.LENGTH_LONG).show();
-        //context.startService(intentBR);
 
-        PendingIntent pi = PendingIntent.getBroadcast(context, 2, intentBR, PendingIntent.FLAG_UPDATE_CURRENT);
-
-
-        NotificationCompat.Builder notificationCompBuilder = new NotificationCompat.Builder(context)
-                .setContentTitle("Reminder: Habitual")
-                .setContentText("Did you engage in your habit? ")
-                .setTicker("New Habit")
-                .setSmallIcon(R.mipmap.ic_launcher);
-
-        notificationCompBuilder.setContentIntent(pi);
-
-
-
-
-
-        manager.notify(0, notificationCompBuilder.build());
     }
 }

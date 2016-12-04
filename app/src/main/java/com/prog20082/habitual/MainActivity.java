@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -41,23 +42,32 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         habitsListView = (ListView) findViewById(R.id.habitsListView);
         txtName = (TextView) findViewById(R.id.txtName);
         txtGoals = (TextView) findViewById(R.id.txtGoals);
         habitsArray = new ArrayList<Habit>();
 
-        Intent notifyIntent = new Intent(this, NotificationPublisher.class);
-        notifyIntent.getStringExtra("hour");
-        notifyIntent.getStringExtra("minute");
+        //get intent data from TimePickerFragment
+        Intent in = getIntent();
+        Calendar cal = Calendar.getInstance();
+        int h = in.getIntExtra("hour",11);
+        int m = in.getIntExtra("minute",05);
 
 
-        long futureTimeInMilliSec = System.currentTimeMillis();
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notifyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Toast.makeText(this, "Content Received: " + h + " " + m , Toast.LENGTH_LONG).show();
+        cal.set(Calendar.HOUR_OF_DAY, h);
+        cal.set(Calendar.MINUTE, m);
+
+
+
+
+        //go to reciever
+        Intent timeIntent = new Intent(this, NotificationPublisher.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0,timeIntent , PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        alarm.set(AlarmManager.RTC, futureTimeInMilliSec, pendingIntent);
+        alarm.set(AlarmManager.RTC, cal.getTimeInMillis(), pendingIntent);
 
     }
 
@@ -69,8 +79,6 @@ public class MainActivity extends AppCompatActivity  {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-
 
         Toast.makeText(this, "Coming from the createHabit Page", Toast.LENGTH_LONG).show();
 
@@ -87,7 +95,14 @@ public class MainActivity extends AppCompatActivity  {
             }
         }
 
+
+
+
+
+
     }
+
+
 
     public void addHabit(View view) {
 

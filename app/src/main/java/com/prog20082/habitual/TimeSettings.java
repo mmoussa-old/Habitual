@@ -24,7 +24,7 @@ public class TimeSettings implements TimePickerDialog.OnTimeSetListener {
 
 
         Toast.makeText(context, "Time Selected is hour: " + hourOfDay + " minute: " + minute,Toast.LENGTH_LONG).show();
-        Intent intent = new Intent(context, NotificationPublisher.class);
+        Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra("hour", hourOfDay);
         intent.putExtra("minute", minute);
         context.startActivity(intent);
