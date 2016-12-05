@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -25,8 +26,8 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
     EditText edtHabitName;
     EditText edtGoal;
     Spinner spnGoalUnits;
-    CheckBox chkBadHabit;
-    CheckBox chkGoodHabit;
+    RadioButton chkBadHabit;
+    RadioButton chkGoodHabit;
     CheckBox chkNotify;
 
     private static final int MAIN_ACTIVITY = 1;
@@ -45,8 +46,8 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
         //Getting all the widgets from activity_create_habit.xml
         edtHabitName = (EditText) findViewById(R.id.edtHabitName);
         edtGoal = (EditText) findViewById(R.id.edtGoal);
-        chkBadHabit = (CheckBox) findViewById(R.id.chkBadHabit);
-        chkGoodHabit = (CheckBox) findViewById(R.id.chkGoodHabit);
+        chkBadHabit = (RadioButton) findViewById(R.id.chkBadHabit);
+        chkGoodHabit = (RadioButton) findViewById(R.id.chkGoodHabit);
 
 
         spnGoalUnits = (Spinner) findViewById(R.id.spnGoalUnits);
@@ -82,15 +83,11 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
 
         //Have to work on spnGoalUnits forgot that mo; onSelected junk
 
-        //Send a new parcelable habit for testing purposes to see if it goes to next screen
-        Habit parcelableHabit = new Habit(habitName, true, 3, goal);
-        Intent intent = new Intent(this, CreateHabitActivity.class);
-        intent.putExtra("habit", parcelableHabit);
-        setResult(RESULT_OK, intent);
+
 
         //Create a notification if the notification checkbox is checked
 
-<<<<<<<<< Temporary merge branch 1
+
         if (chkNotify.isChecked()) {
 
             NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -110,7 +107,7 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
 
 
         }
-=========
+
       //Send a new parcelable habit for testing purposes to see if it goes to next screen
       Habit parcelableHabit = new Habit(habitName, true, 3, goal, false);
       Intent intent = new Intent(this, CreateHabitActivity.class);
@@ -119,7 +116,6 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
       database.saveHabit(parcelableHabit);
       setResult(RESULT_OK, intent);
       finish();
->>>>>>>>> Temporary merge branch 2
 
     }
 
