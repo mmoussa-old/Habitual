@@ -16,6 +16,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreateHabitActivity"></activity>
+
+        <service android:name="com.prog20082.habitual.TimeService"
+            android:enabled="true"/>
+
+        //register the service
+
+        <receiver android:name="com.prog20082.habitual.NotificationPublisher"/>
+
     </application>
 
 </manifest>

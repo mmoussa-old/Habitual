@@ -42,6 +42,9 @@ public class HabitsDb {
     public static final String COMPLETE = "complete";
     public static final int COMPLETE_COLUMN = 5;
 
+    public static final String STREAK = "streak";
+    public static final int STREAK_COLUMN = 6;
+
 
     // DDL for creating the table. Careful with adding spaces!!
     public static final String CREATE_HABITS_TABLE =
@@ -87,6 +90,23 @@ public class HabitsDb {
         database.close();
         return numberDeleted;
 
+    }
+
+    //update database
+    public Habit updateHabitStreak(Habit habit){
+        database = openHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(STREAK, habit.getStreak());
+
+        String where = ID + "=?";
+        String[] args = new String[]{String.valueOf(habit.getId())};
+
+        database.update(HABITS_TABLE, values, where, args);
+
+
+        database.close();
+        return habit;
     }
 
     //load all habits
