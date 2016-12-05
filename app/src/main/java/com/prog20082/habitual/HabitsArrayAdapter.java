@@ -50,7 +50,7 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
     deleteButton.setTag(position);
 
-    db = new HabitsDb(context);
+
 
     deleteButton.setOnClickListener(
       new Button.OnClickListener() {
@@ -58,7 +58,7 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
         @Override
         public void onClick(View view) {
 
-
+          db = new HabitsDb(context);
           //Returns the index of the habit item from the list
           Integer index = (Integer) view.getTag();
           Habit habitToDelete = habits.get(index); //gets habit from list

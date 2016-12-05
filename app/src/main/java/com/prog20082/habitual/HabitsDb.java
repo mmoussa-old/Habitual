@@ -103,6 +103,7 @@ public class HabitsDb {
 
         numberDeleted = database.delete(HABITS_TABLE, where, whereArgs);
 
+        database.close();
         return numberDeleted;
     }
 

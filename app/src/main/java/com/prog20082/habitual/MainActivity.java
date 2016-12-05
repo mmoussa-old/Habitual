@@ -59,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
       }
   }
 
+    public void deleteHabitMain(Habit habit){
+
+        HabitsDb db = new HabitsDb(this);
+        db.deleteHabit(habit);
+
+    }
+
 
 
   public void addHabit(View view) {
