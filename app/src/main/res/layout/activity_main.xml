@@ -17,11 +17,6 @@
       android:layout_height="wrap_content"
       android:text="Add Habit"
       android:onClick="addHabit"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="delete test"
-        android:onClick="deleteTest"/>
 
     <TextView
         android:layout_width="wrap_content"

@@ -27,7 +27,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Goal"
+            android:hint="Goal #"
+            android:inputType="number"
             android:id="@+id/edtGoal"/>
 
         <Spinner
@@ -44,7 +45,11 @@
     </LinearLayout>
 
 
-    <CheckBox
+  <RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RadioButton
       android:textAppearance="?android:textAppearanceMedium"
       android:text="Good Habit"
       android:layout_marginTop="15dp"
@@ -52,7 +57,7 @@
       android:layout_height="wrap_content"
       android:id="@+id/chkGoodHabit"/>
 
-    <CheckBox
+    <RadioButton
       android:textAppearance="?android:textAppearanceMedium"
       android:text="Bad Habit"
       android:layout_marginTop="10dp"
@@ -60,13 +65,17 @@
       android:layout_height="wrap_content"
       android:id="@+id/chkBadHabit"/>
 
-    <CheckBox
-        android:id="@+id/chkNotify"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notify"
-        android:textAppearance="?android:textAppearanceMedium"/>
+  </RadioGroup>
+
+  <CheckBox
+    android:id="@+id/chkNotify"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Notify"
+    android:textAppearance="?android:textAppearanceMedium"/>
+
+
 
     <Button
         android:layout_marginTop="20dp"

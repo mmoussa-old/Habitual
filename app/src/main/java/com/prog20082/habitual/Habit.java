@@ -25,7 +25,10 @@ public class Habit implements Parcelable {
         dest.writeInt(goal);
         dest.writeString(goalUnits);
         dest.writeByte((byte) (complete ? 1 : 0));
+<<<<<<<<< Temporary merge branch 1
+=========
         dest.writeInt(streak);
+>>>>>>>>> Temporary merge branch 2
     }
 
     public Habit(String name, boolean good, int goal, String goalUnits, boolean complete) {

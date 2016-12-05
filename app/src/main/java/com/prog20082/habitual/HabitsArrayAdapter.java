@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
@@ -20,6 +21,10 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
   private Context context;
   private List<Habit> habits;
+  private Habit habit;
+  HabitsDb db;
+
+
 
   //Constructor call on Creation
   public HabitsArrayAdapter(Context context, int resource, ArrayList<Habit> objects) {
@@ -32,7 +37,7 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
   public View getView(int position, View convertView, ViewGroup parent) {
 
     //get the habit we are displaying
-    Habit habit = habits.get(position);
+    habit = habits.get(position);
     //comment yeezy
 
     //Get the inflater and inflate the xml layout for each item
@@ -41,6 +46,31 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
     TextView habitName = (TextView) view.findViewById(R.id.txtHabitName);
     TextView goalUnit = (TextView) view.findViewById(R.id.txtHabitGoals);
+    Button deleteButton = (Button) view.findViewById(R.id.btnDeleteHabit);
+
+    deleteButton.setTag(position);
+
+
+
+    deleteButton.setOnClickListener(
+      new Button.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+
+          db = new HabitsDb(context);
+          //Returns the index of the habit item from the list
+          Integer index = (Integer) view.getTag();
+          Habit habitToDelete = habits.get(index); //gets habit from list
+          //long dbId = habitToDelete.getId();
+          db.deleteHabit(habitToDelete);
+          habits.remove(index.intValue());
+          notifyDataSetChanged();
+
+        }
+      }
+    );
+
 
     //Set habit name and description
     habitName.setText(habit.getName().toString());
@@ -51,7 +81,4 @@ public class HabitsArrayAdapter extends ArrayAdapter<Habit> {
 
   }
 
-  public void deleteHabit(View view){
-
-  }
 }
