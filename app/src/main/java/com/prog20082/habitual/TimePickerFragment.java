@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.app.DialogFragment;
 import android.app.Dialog;
+import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -19,7 +20,6 @@ import java.util.Calendar;
  */
 
 public class TimePickerFragment extends DialogFragment  implements TimePickerDialog.OnTimeSetListener{
-
 
 
 
@@ -45,6 +45,8 @@ public class TimePickerFragment extends DialogFragment  implements TimePickerDia
 
         Toast.makeText(getActivity(), "Time SET BRUH: " + hourOfDay + " minute: " + minute,Toast.LENGTH_LONG).show();
 
+
+
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR, hourOfDay);
         cal.set(Calendar.MINUTE, minute);
@@ -55,6 +57,13 @@ public class TimePickerFragment extends DialogFragment  implements TimePickerDia
 
         intent.putExtras(bundle);
         startActivity(intent);
+
+
+
+
+
+
+
 
 
 

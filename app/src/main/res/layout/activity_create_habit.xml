@@ -57,12 +57,31 @@
       android:layout_height="wrap_content"
       android:id="@+id/chkBadHabit"/>
 
+
+    <CheckBox
+        android:textAppearance="?android:textAppearanceMedium"
+        android:text="Notify Me"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chkNotify"/>
+
     <Button
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
         android:onClick="submitHabit"/>
+
+
+    <Button
+        android:id="@+id/btnSetTime"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Time"
+        android:enabled="false"
+        android:onClick="notifyMe"/>
 
 
 

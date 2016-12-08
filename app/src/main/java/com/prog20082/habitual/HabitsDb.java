@@ -54,6 +54,7 @@ public class HabitsDb {
                     GOOD + " INTEGER, " +
                     GOAL + " INTEGER, " +
                     GOAL_UNITS + " TEXT, " +
+                    STREAK + " INTEGER, " +
                     COMPLETE + " INTEGER)";
 
     public HabitsDb(Context context){
@@ -69,6 +70,9 @@ public class HabitsDb {
         values.put(GOOD, habit.isGood() ? 1 : 0);
         values.put(GOAL, habit.getGoal());
         values.put(GOAL_UNITS, habit.getGoalUnits());
+        //streak will be 0 initially;
+        values.put(STREAK, habit.getStreak());
+
         values.put(COMPLETE, habit.isComplete() ? 1 : 0);
 
         long dbId = database.insert(HABITS_TABLE, null, values);

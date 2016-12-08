@@ -1,12 +1,18 @@
 package com.prog20082.habitual;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.Toast;
 
 /**
  * Created by mmous on 11/22/2016.
  */
-public class Habit implements Parcelable{
+
+
+public class Habit implements Parcelable {
 
     private long id;
     private String name;
@@ -14,17 +20,22 @@ public class Habit implements Parcelable{
     private int goal;
     private String goalUnits;
     private boolean complete;
+    private int streak;
+    Bundle b;
+    Intent i;
 
-
+    private static final String YES_ACTION = "com.prog20082.habitual.YES";
+    private static final String NO_ACTION = "com.prog20082.habitual.NO";
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-      dest.writeLong(id);
-      dest.writeString(name);
-      dest.writeByte((byte) (good ? 1 : 0));
-      dest.writeInt(goal);
-      dest.writeString(goalUnits);
-      dest.writeByte((byte) (complete ? 1 : 0));
+        dest.writeLong(id);
+        dest.writeString(name);
+        dest.writeByte((byte) (good ? 1 : 0));
+        dest.writeInt(goal);
+        dest.writeInt(streak);
+        dest.writeString(goalUnits);
+        dest.writeByte((byte) (complete ? 1 : 0));
     }
 
     public Habit(String name, boolean good, int goal, String goalUnits, boolean complete) {
@@ -33,6 +44,7 @@ public class Habit implements Parcelable{
         this.goal = goal;
         this.goalUnits = goalUnits;
         this.complete = complete;
+        this.streak = 0;
     }
 
     protected Habit(Parcel in) {
@@ -55,6 +67,17 @@ public class Habit implements Parcelable{
             return new Habit[size];
         }
     };
+
+
+
+
+    public int getStreak() {
+        return streak;
+    }
+
+    public void setStreak(int streak) {
+        this.streak = streak;
+    }
 
     public long getId() {
         return id;
@@ -109,8 +132,10 @@ public class Habit implements Parcelable{
         return 0;
     }
 
-  @Override
-  public String toString() {
-    return name + goalUnits;
-  }
+    @Override
+    public String toString() {
+        return name + goalUnits;
+    }
+
+
 }
