@@ -24,9 +24,6 @@ public class NotificationReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-
-
-
         Intent in = new Intent(context, TimeService.class);
         context.startService(in);
 
@@ -38,19 +35,12 @@ public class NotificationReceiver extends BroadcastReceiver {
 
             if (action == ActionClass.YES_ACTION) {
                 Toast.makeText(context, "You Clicked Yes!", Toast.LENGTH_LONG).show();
-//                Habit h = new Habit(HabitsDb.NAME, HabitsDb.GOOD, HabitsDb.GOAL, HabitsDb.GOAL_UNITS, HabitsDb.COMPLETE);
-//                int streak = h.getStreak();
-//                streak = streak + 1;
-//                h.setStreak(streak);
-
-
 
             }
 
             if (action == ActionClass.NO_ACTION) {
                 Toast.makeText(context, "You clicked No!", Toast.LENGTH_SHORT).show();
-//                Habit h = new Habit(HabitsDb.NAME, HabitsDb.GOOD, HabitsDb.GOAL, HabitsDb.GOAL_UNITS, HabitsDb.COMPLETE);
-//                h.setStreak(0);
+
             }
         }
 
@@ -58,16 +48,6 @@ public class NotificationReceiver extends BroadcastReceiver {
 
             Log.i("null", "null");
         }
-
-
-
-
-
-
-
-
-
-
 
     }
 

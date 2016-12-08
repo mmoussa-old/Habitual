@@ -33,9 +33,6 @@ public class TimeService extends Service {
         return Service.START_NOT_STICKY;
     }
 
-
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -49,11 +46,11 @@ public class TimeService extends Service {
     public void generateNotification() {
 
         Intent intentBR = new Intent(getApplicationContext(), CreateHabitActivity.class);
-        Bundle b = new Bundle();
 
-
+        //Random generator will generate notification for each habit
         Random random = new Random();
         int m = random.nextInt(9999 - 1000) + 1000;
+
         //Yes Intent
         Intent yesIntent = new Intent();
         yesIntent.setAction(ActionClass.YES_ACTION);
@@ -68,6 +65,7 @@ public class TimeService extends Service {
 
         PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, intentBR, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        //Vibration Pattern
         long[] pattern = {500,500,500,500,500,500};
 
         NotificationCompat.Builder notificationCompBuilder = new NotificationCompat.Builder(getApplicationContext())

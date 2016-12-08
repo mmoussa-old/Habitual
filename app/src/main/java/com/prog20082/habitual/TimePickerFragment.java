@@ -45,8 +45,6 @@ public class TimePickerFragment extends DialogFragment  implements TimePickerDia
 
         Toast.makeText(getActivity(), "Time SET BRUH: " + hourOfDay + " minute: " + minute,Toast.LENGTH_LONG).show();
 
-
-
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR, hourOfDay);
         cal.set(Calendar.MINUTE, minute);

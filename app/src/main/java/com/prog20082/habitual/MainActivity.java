@@ -36,7 +36,14 @@ public class MainActivity extends AppCompatActivity {
         txtGoals = (TextView) findViewById(R.id.txtGoals);
         habitsArray = new ArrayList<Habit>();
         adapter = new HabitsArrayAdapter(this, 0, habitsArray);
+        notificationGen();
 
+
+
+    }
+
+
+    public void notificationGen() {
 
         //get intent data from TimePickerFragment
         Intent in = getIntent();
@@ -48,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Content Received: " + h + " " + m, Toast.LENGTH_LONG).show();
         cal.set(Calendar.HOUR_OF_DAY, h);
         cal.set(Calendar.MINUTE, m);
-//
-//
+
         //go to reciever
         Intent timeIntent = new Intent(this, NotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, timeIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -57,12 +63,7 @@ public class MainActivity extends AppCompatActivity {
         alarm.set(AlarmManager.RTC, cal.getTimeInMillis(), pendingIntent);
 
 
-
-
-
-
     }
-
 
 
     @Override

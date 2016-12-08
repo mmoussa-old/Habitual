@@ -98,20 +98,6 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
         setResult(RESULT_OK, intent);
 
 
-//        String action = getIntent().getAction();
-//
-//        if (action == ActionClass.YES_ACTION) {
-//            Toast.makeText(this, "You Clicked Yes!", Toast.LENGTH_LONG).show();
-//
-//        }
-//
-//        if (action == ActionClass.STOP_ACTION) {
-//            Toast.makeText(this, "You clicked No!", Toast.LENGTH_SHORT).show();
-//        }
-
-
-
-
 
 
     }
@@ -127,6 +113,8 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
 
     }
 
+
+
     public void notifyMe(View view) {
 
         //Create a dialog fragment that will initiate the TimePicker Fragement
@@ -134,9 +122,13 @@ public class CreateHabitActivity extends AppCompatActivity implements OnItemSele
         timeFragment.show(getFragmentManager(), "TimePicker");
 
 
+
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-
+    }
 }
